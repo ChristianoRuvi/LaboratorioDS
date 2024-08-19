@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+
+actor "Aluno" as aluno
+actor "Professor" as professor
+actor "Secretaria" as secretaria
+actor "Sistema de Cobranças" as cobrancas
+
+rectangle "Sistema de Matrículas" {
+    usecase "Login" as UC1
+    usecase "Gerenciar Perfil" as UC2
+    usecase "Efetuar Matrícula em Disciplinas" as UC3
+    usecase "Cancelar Matrícula em Disciplinas" as UC4
+    usecase "Consultar Disciplinas Disponíveis" as UC5
+    usecase "Consultar Alunos Matriculados" as UC6
+    usecase "Gerenciar Disciplinas" as UC7
+    usecase "Gerenciar Professores" as UC8
+    usecase "Gerenciar Alunos" as UC9
+    usecase "Gerar Currículo Semestral" as UC10
+    usecase "Notificar Sistema de Cobranças" as UC11
+}
+
+aluno --> UC1
+aluno --> UC2
+aluno --> UC3
+aluno --> UC4
+
+professor --> UC1
+professor --> UC6
+
+secretaria --> UC1
+secretaria --> UC7
+secretaria --> UC8
+secretaria --> UC9
+secretaria --> UC10
+secretaria --> UC11
+
+UC11 --> cobrancas
+
+UC3 ..> UC5 : <<include>>
+UC4 ..> UC5 : <<include>>
+UC7 ..> UC10 : <<include>>
+UC7 ..> UC6 : <<include>>
+UC11 <.. UC3 : <<extend>>
+UC11 <.. UC4 : <<extend>>
+
+@enduml
