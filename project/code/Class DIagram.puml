@@ -1,0 +1,65 @@
+@startuml
+
+' Classes principais
+class Aluno {
+    - matricula: String
+    - nome: String
+    - email: String
+    - telefone: String
+    + realizarMatricula(disciplina: Disciplina): void
+    + cancelarMatricula(disciplina: Disciplina): void
+    + consultarDisciplinas(): List<Disciplina>
+}
+
+class Professor {
+    - id: String
+    - nome: String
+    - email: String
+    + consultarAlunosMatriculados(disciplina: Disciplina): List<Aluno>
+}
+
+class Secretaria {
+    - id: String
+    - nome: String
+    - email: String
+    + gerenciarDisciplinas(): void
+    + gerenciarProfessores(): void
+    + gerenciarAlunos(): void
+    + gerarCurriculoSemestral(): Curriculo
+    + notificarSistemaDeCobrancas(aluno: Aluno): void
+}
+
+class Disciplina {
+    - codigo: String
+    - nome: String
+    - creditos: int
+    - professor: Professor
+    - alunos: List<Aluno>
+    + adicionarAluno(aluno: Aluno): void
+    + removerAluno(aluno: Aluno): void
+    + consultarVagas(): int
+}
+
+class Curso {
+    - nome: String
+    - creditosTotais: int
+    - disciplinas: List<Disciplina>
+}
+
+class Curriculo {
+    - semestre: String
+    - disciplinas: List<Disciplina>
+    + adicionarDisciplina(disciplina: Disciplina): void
+    + removerDisciplina(disciplina: Disciplina): void
+}
+
+class SistemaDeCobrancas {
+    + cobrar(aluno: Aluno, disciplinas: List<Disciplina>): void
+}
+
+
+
+
+
+
+@enduml
