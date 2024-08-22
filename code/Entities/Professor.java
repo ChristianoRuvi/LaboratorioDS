@@ -1,4 +1,7 @@
+package Entities;
 import java.util.List;
+
+
 
 public class Professor {
     private String id;

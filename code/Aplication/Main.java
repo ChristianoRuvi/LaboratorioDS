@@ -1,5 +1,10 @@
-import java.util.List;
 
+import Entities.Aluno;
+import Entities.Curso;
+import Entities.Disciplina;
+import Entities.Professor;
+import Entities.Curriculo;
+import Entities.SistemaDeCobrancas;
 
 public class Main {
     public static void main(String[] args) {
