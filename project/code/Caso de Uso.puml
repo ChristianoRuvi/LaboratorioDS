@@ -7,7 +7,7 @@ actor "Secretaria" as secretaria
 actor "Sistema de Cobranças" as cobrancas
 
 rectangle "Sistema de Matrículas" {
-    usecase "Login" as UC1
+
     usecase "Gerenciar Perfil" as UC2
     usecase "Efetuar Matrícula em Disciplinas" as UC3
     usecase "Cancelar Matrícula em Disciplinas" as UC4
@@ -20,15 +20,15 @@ rectangle "Sistema de Matrículas" {
     usecase "Notificar Sistema de Cobranças" as UC11
 }
 
-aluno --> UC1
+
 aluno --> UC2
 aluno --> UC3
 aluno --> UC4
 
-professor --> UC1
+
 professor --> UC6
 
-secretaria --> UC1
+
 secretaria --> UC7
 secretaria --> UC8
 secretaria --> UC9
