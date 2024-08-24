@@ -1,4 +1,5 @@
 package Entities;
+import Entities.Curriculo;
 import java.util.List;
 
 
