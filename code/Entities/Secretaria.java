@@ -40,15 +40,12 @@ public class Secretaria {
     }
 
     public void gerenciarDisciplinas() {
-        // Logic to manage disciplines
     }
 
     public void gerenciarProfessores() {
-        // Logic to manage professors
     }
 
     public void gerenciarAlunos() {
-        // Logic to manage students
     }
 
     public Curriculo gerarCurriculoSemestral() {
@@ -56,6 +53,5 @@ public class Secretaria {
     }
 
     public void notificarSistemaDeCobrancas(Aluno aluno) {
-        // Logic to notify the billing system
     }
 }
