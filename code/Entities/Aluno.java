@@ -8,7 +8,6 @@ public class Aluno {
     private String email;
     private String telefone;
 
-    // Constructor
     public Aluno(String matricula, String nome, String email, String telefone) {
         this.matricula = matricula;
         this.nome = nome;
@@ -16,7 +15,6 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    // Getters and Setters
     public String getMatricula() {
         return matricula;
     }
@@ -49,17 +47,15 @@ public class Aluno {
         this.telefone = telefone;
     }
 
-    // Methods to manage enrollment in disciplines
     public void realizarMatricula(Disciplina disciplina) {
-        // Logic to enroll in a discipline
     }
 
     public void cancelarMatricula(Disciplina disciplina) {
-        // Logic to cancel enrollment in a discipline
+        
     }
 
     public List<Disciplina> consultarDisciplinas() {
-        // Logic to consult enrolled disciplines
+        
         return new ArrayList<>();
     }
 }
