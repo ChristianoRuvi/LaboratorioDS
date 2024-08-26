@@ -56,14 +56,18 @@ public class Disciplina {
     }
 
     public void adicionarAluno(Aluno aluno) {
+        System.out.println("Stub: " + aluno.getNome());
         this.alunos.add(aluno);
     }
 
     public void removerAluno(Aluno aluno) {
+        System.out.println("Stub: " + aluno.getNome());   
         this.alunos.remove(aluno);
     }
 
     public int consultarVagas() {
+        System.out.println("Stub: ");
+
         return 60 - this.alunos.size();
     }
 }
