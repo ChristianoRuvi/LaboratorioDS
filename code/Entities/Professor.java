@@ -39,6 +39,7 @@ public class Professor {
     }
 
     public List<Aluno> consultarAlunosMatriculados(Disciplina disciplina) {
+        System.out.println("stub"+disciplina.getNome());
         return disciplina.getAlunos();
     }
 }

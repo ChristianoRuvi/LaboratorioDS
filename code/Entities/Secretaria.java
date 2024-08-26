@@ -37,17 +37,22 @@ public class Secretaria {
     }
 
     public void gerenciarDisciplinas() {
+        System.out.println("Stub");
     }
 
     public void gerenciarProfessores() {
+        System.out.println("Stub");
     }
 
     public void gerenciarAlunos() {
+        System.out.println("Stub");
     }
 
     public void CurriculoSemestral(Curriculo curriculo) {
+        System.out.println("Stub");
     }
 
     public void notificarSistemaDeCobrancas(Aluno aluno) {
+        System.out.println("Stub");
     }
 }
