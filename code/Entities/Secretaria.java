@@ -1,7 +1,4 @@
 package Entities;
-import Entities.Curriculo;
-import java.util.List;
-
 
 
 public class Secretaria {
@@ -48,8 +45,7 @@ public class Secretaria {
     public void gerenciarAlunos() {
     }
 
-    public Curriculo gerarCurriculoSemestral() {
-        return new Curriculo();
+    public void CurriculoSemestral(Curriculo curriculo) {
     }
 
     public void notificarSistemaDeCobrancas(Aluno aluno) {
