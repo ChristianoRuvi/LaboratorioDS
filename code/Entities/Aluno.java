@@ -48,13 +48,19 @@ public class Aluno {
     }
 
     public void realizarMatricula(Disciplina disciplina) {
+        System.out.println("Stub: " + disciplina.getNome());
+
     }
 
     public void cancelarMatricula(Disciplina disciplina) {
+        System.out.println("Stub: " + disciplina.getNome());
+
         
     }
 
     public List<Disciplina> consultarDisciplinas() {
+        System.out.println("Stub: ");
+
         
         return new ArrayList<>();
     }
