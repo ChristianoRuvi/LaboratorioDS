@@ -4,12 +4,12 @@ import java.util.List;
 
 
 
-public class Curso {
+public class Curriculo {
     private String nome;
     private int creditosTotais;
     private List<Disciplina> disciplinas;
 
-    public Curso(String nome, int creditosTotais) {
+    public Curriculo(String nome, int creditosTotais) {
         this.nome = nome;
         this.creditosTotais = creditosTotais;
         this.disciplinas = new ArrayList<>();
