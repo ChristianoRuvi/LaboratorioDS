@@ -6,6 +6,7 @@ class Aluno {
     - nome: String
     - email: String
     - telefone: String
+     + gerenciarAlunos(): void
     + realizarMatricula(disciplina: Disciplina): void
     + cancelarMatricula(disciplina: Disciplina): void
     + consultarDisciplinas(): List<Disciplina>
@@ -15,6 +16,7 @@ class Professor {
     - id: String
     - nome: String
     - email: String
+     + gerenciarProfessores(): void
     + consultarAlunosMatriculados(disciplina: Disciplina): List<Aluno>
 }
 
@@ -22,9 +24,6 @@ class Secretaria {
     - id: String
     - nome: String
     - email: String
-    + gerenciarDisciplinas(): void
-    + gerenciarProfessores(): void
-    + gerenciarAlunos(): void
     + gerarCurriculoSemestral(): Curriculo
     + notificarSistemaDeCobrancas(aluno: Aluno): void
 }
@@ -33,11 +32,10 @@ class Disciplina {
     - codigo: String
     - nome: String
     - creditos: int
-    - professor: Professor
-    - alunos: List<Aluno>
     + adicionarAluno(aluno: Aluno): void
     + removerAluno(aluno: Aluno): void
     + consultarVagas(): int
+    + gerenciarDisciplinas(): void
 }
 
 class Curso {
@@ -46,8 +44,10 @@ class Curso {
     - disciplinas: List<Disciplina>
 }
 
-class Curriculo {
+class Turma {
     - semestre: String
+    - aluno: List<Aluno>
+    - professor: Professor
     - disciplinas: List<Disciplina>
     + adicionarDisciplina(disciplina: Disciplina): void
     + removerDisciplina(disciplina: Disciplina): void
@@ -60,33 +60,33 @@ class SistemaDeCobrancas {
 ' Associações
 
 ' Relacionamento entre Aluno e Disciplina (Aluno se matricula em várias Disciplinas)
-Aluno "1" --> "0..*" Disciplina : "matricula em"
+Aluno "1" --> "1..*" Disciplina : "matricula em"
 
 ' Relacionamento entre Aluno e Curso (Aluno está associado a um Curso)
 Aluno "1" -- "1" Curso : "realiza"
 
 ' Relacionamento entre Professor e Disciplina (Professor leciona várias Disciplinas)
-Professor "1" --> "0..*" Disciplina : "leciona"
+Professor "1" --> "1..*" Disciplina : "leciona"
 
 ' Relacionamento entre Secretaria e Disciplina (Secretaria gerencia várias Disciplinas)
-Secretaria "1" --> "0..*" Disciplina : "gerencia"
+Secretaria "1" --> "1..*" Disciplina : "gerencia"
 
 ' Relacionamento entre Secretaria e Professor (Secretaria gerencia vários Professores)
-Secretaria "1" --> "0..*" Professor : "gerencia"
+Secretaria "1" --> "1..*" Professor : "gerencia"
 
 ' Relacionamento entre Secretaria e Aluno (Secretaria gerencia vários Alunos)
-Secretaria "1" --> "0..*" Aluno : "gerencia"
+Secretaria "1" --> "1..*" Aluno : "gerencia"
 
 ' Relacionamento entre Secretaria e Curriculo (Secretaria gera um Curriculo)
-Secretaria "1" --> "1" Curriculo : "gera"
+Secretaria "1" --> "1" Turma : "gera"
 
 ' Relacionamento entre Secretaria e Sistema de Cobranças (Secretaria notifica o Sistema de Cobranças)
 Secretaria "1" --> "1" SistemaDeCobrancas : "notifica"
 
 ' Relacionamento entre Curso e Disciplina (Curso inclui várias Disciplinas)
-Curso "1" -- "0..*" Disciplina : "inclui"
+Curso "1" -- "1'..*" Disciplina : "inclui"
 
 ' Relacionamento entre Curriculo e Disciplina (Curriculo é composto por várias Disciplinas)
-Curriculo "1" -- "0..*" Disciplina : "composto por"
+Turma "1" -- "1..*" Disciplina : "composto por"
 
 @enduml
