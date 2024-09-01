@@ -1,15 +1,14 @@
 package Entities;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public class Curriculo {
+public class Curso {
     private String nome;
     private int creditosTotais;
     private List<Disciplina> disciplinas;
 
-    public Curriculo(String nome, int creditosTotais) {
+    public Curso(String nome, int creditosTotais) {
         this.nome = nome;
         this.creditosTotais = creditosTotais;
         this.disciplinas = new ArrayList<>();
@@ -19,16 +18,8 @@ public class Curriculo {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public int getCreditosTotais() {
         return creditosTotais;
-    }
-
-    public void setCreditosTotais(int creditosTotais) {
-        this.creditosTotais = creditosTotais;
     }
 
     public List<Disciplina> getDisciplinas() {
@@ -45,11 +36,22 @@ public class Curriculo {
         disciplinas.remove(disciplina);
     }
 
-    public int calcularCreditosTotais() {
-        int total = 0;
+    // Método para buscar uma disciplina por nome
+    public Disciplina getDisciplinaPorNome(String nome) {
         for (Disciplina disciplina : disciplinas) {
-            total += disciplina.getCreditos();
+            if (disciplina.getNome().equalsIgnoreCase(nome)) {
+                return disciplina;
+            }
         }
-        return total;
+        return null; // Retorna null se a disciplina não for encontrada
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "nome='" + nome + '\'' +
+                ", creditosTotais=" + creditosTotais +
+                ", disciplinas=" + disciplinas +
+                '}';
     }
 }

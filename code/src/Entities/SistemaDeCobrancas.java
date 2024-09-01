@@ -1,14 +1,13 @@
+
 package Entities;
 import java.util.List;
 
-
 public class SistemaDeCobrancas {
-
     public void cobrar(Aluno aluno, List<Disciplina> disciplinas) {
-        double total = 0.0;
+        int totalCreditos = 0;
         for (Disciplina disciplina : disciplinas) {
-            total += disciplina.getCreditos() * 100;
+            totalCreditos += disciplina.getCargaHoraria();
         }
-        System.out.println("Cobrando " + aluno.getNome() + " um total de R$ " + total);
+        System.out.println("Cobrando " + totalCreditos + " créditos de " + aluno.getNome());
     }
 }
