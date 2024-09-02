@@ -1,5 +1,5 @@
 # Sistema de Matrícula
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+O objetivo do projeto é informatizar o processo de matrículas de uma universidade, automatizando a gestão de currículos, disciplinas, professores e alunos. O sistema permitirá que os alunos se matriculem em disciplinas obrigatórias e optativas, com restrições de quantidade e vagas, além de possibilitar o cancelamento de matrículas. O sistema também garantirá que disciplinas sejam ativadas somente se houver um número mínimo de alunos inscritos, notificando o sistema de cobranças sobre as matrículas para que os alunos possam ser corretamente cobrados. Além disso, os professores poderão acessar o sistema para consultar a lista de alunos matriculados em suas disciplinas, com a segurança de acesso controlada por senhas.
 
 ## Integrantes
 * Breno de Oliveira Ribeiro
