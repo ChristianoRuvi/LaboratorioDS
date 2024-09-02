@@ -1,92 +1,106 @@
 @startuml
 
-' Classes principais
-class Aluno {
-    - matricula: String
-    - nome: String
-    - email: String
-    - telefone: String
-     + gerenciarAlunos(): void
-    + realizarMatricula(disciplina: Disciplina): void
-    + cancelarMatricula(disciplina: Disciplina): void
-    + consultarDisciplinas(): List<Disciplina>
-}
-
 class Professor {
-    - id: String
-    - nome: String
-    - email: String
-     + gerenciarProfessores(): void
-    + consultarAlunosMatriculados(disciplina: Disciplina): List<Aluno>
-}
-
-class Secretaria {
-    - id: String
-    - nome: String
-    - email: String
-    + gerarCurriculoSemestral(): Curriculo
-    + notificarSistemaDeCobrancas(aluno: Aluno): void
+    +String nome
+    +String email
+    +String id
+    +String senha
+    +Professor(String, String, String, String)
 }
 
 class Disciplina {
-    - codigo: String
-    - nome: String
-    - creditos: int
-    + adicionarAluno(aluno: Aluno): void
-    + removerAluno(aluno: Aluno): void
-    + consultarVagas(): int
-    + gerenciarDisciplinas(): void
+    +int cargahoraria
+    +String nome
+    +List<Alunos> alunos
+    +Professor professor
+    +Disciplina(String, int)
+    +adicionarAluno(Aluno) : void
+    +removerAluno(Aluno) : void
+}
+
+class Curriculo {
+    +String nome
+    +int creditosTotais
+    +List<Disciplina> disciplinas
+    +Curriculo(String, int)
+    +adicionarDisciplina(Disciplina) : void
+    +removerDisciplina(Disciplina) : void
 }
 
 class Curso {
-    - nome: String
-    - creditosTotais: int
-    - disciplinas: List<Disciplina>
+    +String nome
+    +int creditosTotais
+    +List<Disciplina> disciplinas
+    +Curso(String, int)
+    +adicionarDisciplina(Disciplina) : void
+    +removerDisciplina(Disciplina) : void
+}
+
+class Aluno {
+    +String nome
+    +String email
+    +String matricula
+    +List<Curso> cursosMatriculados
+    +Aluno(String, String, String)
+    +adicionarCurso(Curso) : void
+    +removerCurso(Curso) : void
 }
 
 class Turma {
-    - semestre: String
-    - aluno: List<Aluno>
-    - professor: Professor
-    - disciplinas: List<Disciplina>
-    + adicionarDisciplina(disciplina: Disciplina): void
-    + removerDisciplina(disciplina: Disciplina): void
+    +String nome
+    +List<Disciplina> disciplinas
+    +List<Aluno> alunos
+    +Professor professor
+    +Turma(String, Professor)
+    +adicionarAluno(Aluno) : void
+    +removerAluno(Aluno) : void
+}
+
+class Secretaria {
+    +String nome
+    +String email
+    +String senha
+    +Secretaria(String, String, String)
+    +criarTurma(String, Professor) : void
+    +criarAluno(String, String, String) : void
+    +criarProfessor(String, String, String) : void
+}
+
+class DadosUniversidade {
+    +List<Secretaria> secretarias
+    +List<Professor> professores
+    +List<Curso> cursos
+    +List<Aluno> alunos
+    +DadosUniversidade(Secretaria, Professor, Curso, Aluno)
+    +adicionarSecretaria(Secretaria) : void
+    +removerSecretaria(Secretaria) : void
+}
+
+class Main {
+    +void main(String[])
+    +void adicionarProfessor(Professor) : void
+    +void adicionarAluno(Aluno) : void
+    +void criarCurso(String, int) : void
+    +void criarDisciplina(String, int) : void
+    +void criarTurma(String, Professor) : void
+    +void adicionarDisciplinaTurma(Disciplina) : void
 }
 
 class SistemaDeCobrancas {
-    + cobrar(aluno: Aluno, disciplinas: List<Disciplina>): void
+    +void criarCobranca(Aluno, List<Disciplina>) : void
 }
 
-' Associações
-
-' Relacionamento entre Aluno e Disciplina (Aluno se matricula em várias Disciplinas)
-Aluno "1" --> "1..*" Disciplina : "matricula em"
-
-' Relacionamento entre Aluno e Curso (Aluno está associado a um Curso)
-Aluno "1" -- "1" Curso : "realiza"
-
-' Relacionamento entre Professor e Disciplina (Professor leciona várias Disciplinas)
-Professor "1" --> "1..*" Disciplina : "leciona"
-
-' Relacionamento entre Secretaria e Disciplina (Secretaria gerencia várias Disciplinas)
-Secretaria "1" --> "1..*" Disciplina : "gerencia"
-
-' Relacionamento entre Secretaria e Professor (Secretaria gerencia vários Professores)
-Secretaria "1" --> "1..*" Professor : "gerencia"
-
-' Relacionamento entre Secretaria e Aluno (Secretaria gerencia vários Alunos)
-Secretaria "1" --> "1..*" Aluno : "gerencia"
-
-' Relacionamento entre Secretaria e Curriculo (Secretaria gera um Curriculo)
-Secretaria "1" --> "1" Turma : "gera"
-
-' Relacionamento entre Secretaria e Sistema de Cobranças (Secretaria notifica o Sistema de Cobranças)
-Secretaria "1" --> "1" SistemaDeCobrancas : "notifica"
-
-' Relacionamento entre Curso e Disciplina (Curso inclui várias Disciplinas)
-Curso "1" -- "1'..*" Disciplina : "inclui"
-
-' Relacionamento entre Curriculo e Disciplina (Curriculo é composto por várias Disciplinas)
-Turma "1" -- "1..*" Disciplina : "composto por"
+Professor "1" --> "*" Disciplina : professor
+Disciplina "1" --> "*" Curriculo : disciplinas
+Curriculo "1" --> "*" Curso : cursosMatriculados
+Aluno "1" --> "*" Curso : cursosMatriculados
+Curso "1" --> "*" Aluno : alunos
+Turma "1" --> "*" Disciplina : disciplinas
+Turma "1" --> "*" Aluno : alunos
+DadosUniversidade "1" --> "*" Secretaria : secretarias
+DadosUniversidade "1" --> "*" Professor : professores
+DadosUniversidade "1" --> "*" Curso : cursos
+DadosUniversidade "1" --> "*" Aluno : alunos
+Main "1" --> "*" SistemaDeCobrancas : criarCobranca
 
 @enduml
