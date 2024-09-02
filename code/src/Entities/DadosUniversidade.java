@@ -6,10 +6,10 @@ import java.util.List;
 public class DadosUniversidade {
     private Secretaria secretaria;
     private Professor professor;
-    private List<Curso> cursos; // Alteração: agora usamos uma lista de cursos
+    private List<Curso> cursos; 
     private List<Aluno> alunos;
 
-    // Construtor com Parâmetros
+   
     public DadosUniversidade(Secretaria secretaria, Professor professor, List<Curso> cursos, List<Aluno> alunos) {
         this.secretaria = secretaria;
         this.professor = professor;
@@ -17,9 +17,8 @@ public class DadosUniversidade {
         this.alunos = alunos;
     }
 
-    // Construtor Padrão
     public DadosUniversidade() {
-        this.cursos = new ArrayList<>(); // Inicializando lista de cursos
+        this.cursos = new ArrayList<>(); 
         this.alunos = new ArrayList<>();
     }
 
