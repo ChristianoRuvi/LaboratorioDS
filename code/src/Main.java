@@ -6,10 +6,8 @@ public class Main {
     private static DadosUniversidade dados;
 
     public static void main(String[] args) {
-        // Try to load data from the file
         dados = carregarDadosDeTxt();
 
-        // If no data is found, create default data
         if (dados == null) {
             dados = criarDadosIniciais();
         }
@@ -25,7 +23,7 @@ public class Main {
             System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -86,7 +84,6 @@ public class Main {
                 } else if (line.startsWith("Aluno:")) {
                     alunos.add(readAluno(reader));
                 } else if (line.startsWith("Alunos Matriculados:")) {
-                    // No action needed for header, handled within readDisciplina method
                 } else {
                     System.err.println("Linha desconhecida: " + line);
                 }
@@ -139,12 +136,10 @@ public class Main {
             line = line.trim();
             if (line.startsWith("Professor ID:")) {
                 String professorId = line.split(": ")[1].trim();
-                // Lookup professor by ID in DadosUniversidade
                 if (dados != null && dados.getProfessor() != null && dados.getProfessor().getId().equals(professorId)) {
                     disciplina.setProfessor(dados.getProfessor());
                 }
             } else if (line.contains(",")) {
-                // Parse Alunos Matriculados
                 String[] parts = line.split(",", 5);
                 if (parts.length == 5) {
                     Aluno aluno = new Aluno(parts[0], parts[1], parts[2], parts[3], parts[4]);
@@ -165,12 +160,11 @@ public class Main {
             }
         }
         System.err.println("Erro ao carregar campo '" + fieldName + "' na linha: " + (line == null ? "null" : line));
-        return ""; // Return an empty string if the line is invalid
+        return ""; 
     }
 
     public static void salvarDadosEmTxt(DadosUniversidade dados) {
         try (FileWriter writer = new FileWriter("dados_universidade.txt")) {
-            // Save Secretaria
             if (dados.getSecretaria() != null) {
                 writer.write("Secretaria:\n");
                 writer.write("ID: " + dados.getSecretaria().getId() + "\n");
@@ -179,7 +173,6 @@ public class Main {
                 writer.write("Senha: " + dados.getSecretaria().getSenha() + "\n\n");
             }
 
-            // Save Professor
             if (dados.getProfessor() != null) {
                 writer.write("Professor:\n");
                 writer.write("ID: " + dados.getProfessor().getId() + "\n");
@@ -188,7 +181,6 @@ public class Main {
                 writer.write("Senha: " + dados.getProfessor().getSenha() + "\n\n");
             }
 
-            // Save Cursos and Disciplinas
             for (Curso curso : dados.getCursos()) {
                 writer.write("Curso:\n");
                 writer.write("Nome: " + curso.getNome() + "\n");
@@ -209,10 +201,9 @@ public class Main {
                     writer.write("\n");
                 }
 
-                writer.write("\n"); // Separate each course with a newline
+                writer.write("\n"); 
             }
 
-            // Save Alunos (General Information)
             for (Aluno aluno : dados.getAlunos()) {
                 writer.write("Aluno:\n");
                 writer.write("Matrícula: " + aluno.getMatricula() + "\n");
@@ -311,7 +302,7 @@ public class Main {
             System.out.println("6. Voltar");
             System.out.print("Escolha uma opção: ");
             int escolha = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (escolha) {
                 case 1:
@@ -342,7 +333,7 @@ public class Main {
         String nome = scanner.nextLine();
         System.out.print("Digite o total de créditos do curso: ");
         int creditosTotais = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         Curso novoCurso = new Curso(nome, creditosTotais);
         dados.getCursos().add(novoCurso);
@@ -383,7 +374,7 @@ public class Main {
         System.out.println("4. Voltar");
 
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         switch (escolha) {
             case 1:
@@ -409,7 +400,7 @@ public class Main {
             System.out.println((i + 1) + ". " + cursos.get(i).getNome());
         }
         int escolhaCurso = scanner.nextInt() - 1;
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         if (escolhaCurso >= 0 && escolhaCurso < cursos.size()) {
             Curso cursoSelecionado = cursos.get(escolhaCurso);
@@ -418,7 +409,7 @@ public class Main {
             String nome = scanner.nextLine();
             System.out.print("Digite a carga horária da disciplina: ");
             int cargaHoraria = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             Disciplina novaDisciplina = new Disciplina(nome, cargaHoraria);
             cursoSelecionado.adicionarDisciplina(novaDisciplina);
@@ -444,7 +435,7 @@ public class Main {
             String novoNome = scanner.nextLine();
             System.out.print("Digite a nova carga horária da disciplina: ");
             int novaCargaHoraria = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             disciplina.setNome(novoNome);
             disciplina.setCargaHoraria(novaCargaHoraria);
@@ -512,7 +503,7 @@ public class Main {
         System.out.println("4. Voltar");
         System.out.print("Escolha uma opção: ");
         int choice = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         switch (choice) {
             case 1:
@@ -581,7 +572,7 @@ public class Main {
         System.out.println("2. Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         switch (escolha) {
             case 1:
@@ -623,7 +614,7 @@ public class Main {
         System.out.println("3. Voltar");
         System.out.print("Escolha uma opção: ");
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         switch (escolha) {
             case 1:
@@ -663,7 +654,7 @@ public class Main {
             System.out.println((i + 1) + ". " + cursos.get(i).getNome());
         }
         int escolhaCurso = scanner.nextInt() - 1;
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         if (escolhaCurso >= 0 && escolhaCurso < cursos.size()) {
             Curso cursoSelecionado = cursos.get(escolhaCurso);
@@ -679,7 +670,7 @@ public class Main {
             for (int i = 0; i < 5; i++) {
                 System.out.print("Escolha a disciplina (0 para terminar): ");
                 int escolhaDisciplina = scanner.nextInt() - 1;
-                scanner.nextLine(); // consume newline
+                scanner.nextLine(); 
 
                 if (escolhaDisciplina == -1) {
                     break;

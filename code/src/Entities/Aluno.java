@@ -47,7 +47,7 @@ public class Aluno {
 
     public void matricularCurso(Curso curso) {
         this.cursoMatriculado = curso;
-        this.disciplinasMatriculadas.clear(); // Limpa as disciplinas ao trocar de curso
+        this.disciplinasMatriculadas.clear(); 
     }
 
     public void matricularDisciplina(Disciplina disciplina) {

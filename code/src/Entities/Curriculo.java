@@ -52,7 +52,7 @@ public class Curriculo {
         return total;
     }
 
-    // Método para gerar o currículo semestral
+    
     public void gerarCurriculoSemestral(List<Aluno> alunos) {
         System.out.println("Gerando Currículo Semestral...");
         for (Disciplina disciplina : disciplinas) {
