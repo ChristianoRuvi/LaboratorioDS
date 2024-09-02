@@ -36,14 +36,14 @@ public class Curso {
         disciplinas.remove(disciplina);
     }
 
-    // Método para buscar uma disciplina por nome
+    
     public Disciplina getDisciplinaPorNome(String nome) {
         for (Disciplina disciplina : disciplinas) {
             if (disciplina.getNome().equalsIgnoreCase(nome)) {
                 return disciplina;
             }
         }
-        return null; // Retorna null se a disciplina não for encontrada
+        return null; 
     }
 
     @Override
