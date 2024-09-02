@@ -1,8 +1,8 @@
 Secretaria:
 ID: 1
-Nome: Secretaria Central
-Email: secretaria@universidade.com
-Senha: admin123
+Nome: 1
+Email: 
+Senha: 1
 
 Professor:
 ID: 1
@@ -14,8 +14,19 @@ Curso:
 Nome: Engenharia de Software
 Créditos Totais: 180
 
+Curso:
+Nome: 1
+Créditos Totais: 1
+Disciplina:
+Nome: 1
+Carga Horária: 1
+Alunos Matriculados:
+1,1,1,1,1
+20,João Silva,joao@universidade.com,123456789,aluno123
+
+
 Aluno:
-Matrícula: 20231001
+Matrícula: 20
 Nome: João Silva
 Email: joao@universidade.com
 Telefone: 123456789
@@ -27,4 +38,11 @@ Nome: Maria Souza
 Email: maria@universidade.com
 Telefone: 987654321
 Senha: aluno123
+
+Aluno:
+Matrícula: 1
+Nome: 1
+Email: 1
+Telefone: 1
+Senha: 1
 

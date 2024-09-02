@@ -64,6 +64,7 @@ public class Main {
         List<Aluno> alunos = new ArrayList<>();
         Curso cursoAtual = null;
 
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -139,7 +140,7 @@ public class Main {
             if (line.startsWith("Professor ID:")) {
                 String professorId = line.split(": ")[1].trim();
                 // Lookup professor by ID in DadosUniversidade
-                if (dados.getProfessor() != null && dados.getProfessor().getId().equals(professorId)) {
+                if (dados != null && dados.getProfessor() != null && dados.getProfessor().getId().equals(professorId)) {
                     disciplina.setProfessor(dados.getProfessor());
                 }
             } else if (line.contains(",")) {
